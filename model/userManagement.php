@@ -8,6 +8,7 @@
  */
 
 
+// Fonction pour check l'email et le mot de passe a partir de la base de données
 
 function checkLogin($form){
 

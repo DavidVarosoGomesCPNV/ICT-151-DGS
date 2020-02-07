@@ -11,6 +11,7 @@
 /**
  * Open the session, basic php function
  */
+
 session_start();
 
 require "model/userManagement.php";

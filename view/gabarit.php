@@ -76,6 +76,7 @@
                         </button>
                         <div class="nav-collapse collapse">
                             <ul class="nav nav-pills ddmenu">
+                                <!-- php if pour afficher ou retirer les ongles du menu -->
                                 <li><a href="/index.php?action=home">Home</a></li>
                                 <?php if (isset($_SESSION['user'])) :?>
                                 <li><a href="/index.php?action=logout">Logout</a></li>

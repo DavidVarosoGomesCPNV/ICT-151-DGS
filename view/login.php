@@ -16,6 +16,7 @@ $titre = "Rent A Snow - Acceuil";
 
     <br>
     <br>
+    <!-- Mettre ?action en loginIsCorrect poour que il rentre dans la fonction checkLogin, à differentier du simple login() qui ne fait qu'afficher la page-->
     <form action="/index.php?action=loginIsCorrect" method="POST">
         <div class="text">
             <b style="font-size: 35px">Login</b>

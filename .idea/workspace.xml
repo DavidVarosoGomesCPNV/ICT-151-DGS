@@ -79,7 +79,7 @@
       <workItem from="1581071505834" duration="29000" />
       <workItem from="1581071544014" duration="34000" />
       <workItem from="1581071589326" duration="23000" />
-      <workItem from="1581071622228" duration="5336000" />
+      <workItem from="1581071622228" duration="6272000" />
     </task>
     <servers />
   </component>
@@ -98,20 +98,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php-line-method">
-          <url>file://$PROJECT_DIR$/model/userManagement.php</url>
-          <line>11</line>
-          <properties>
-            <option name="className" value="" />
-            <option name="methodName" value="\checkLogin" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
