@@ -1,25 +1,24 @@
 <?php
 /**
  * Created By PhpStrom.
- * Title : ICT-151-DGS - login.php
+ * Title : ICT-151-DGS - register.php
  * User : David-Manuel.VAROSO
- * Date : 07.02.2020
- * Time : 11:10
+ * Date : 14.02.2020
+ * Time : 11:27
  */
-
 
 // tampon de flux stocké en mémoire
 ob_start(); // Ouvre la mémoire tampon , tout ce qui est après ob_start sera dans la variable tampon
-$titre = "Rent A Snow - Login";
+$titre = "Rent A Snow - Register";
 
 ?>
 
     <br>
     <br>
     <!-- Mettre ?action en loginIsCorrect poour que il rentre dans la fonction checkLogin, à differentier du simple login() qui ne fait qu'afficher la page-->
-    <form action="/index.php?action=loginIsCorrect" method="POST">
+    <form action="/index.php?action=registerIsCorrect" method="POST">
         <div class="text">
-            <b style="font-size: 35px">Login</b>
+            <b style="font-size: 35px">Register</b>
         </div>
         <br>
 
@@ -34,7 +33,12 @@ $titre = "Rent A Snow - Login";
                 <input type="password" placeholder="Enter Password" name="password" required>
             </label>
 
-            <button type="submit">Login</button>
+            <label for="uname"><b>Pseudo</b></label>
+            <label>
+                <input type="text" placeholder="Enter Pseudo" name="pseudo" required>
+            </label>
+
+            <button type="submit">Register</button>
             <button type="submit">Reset</button>
         </div>
 

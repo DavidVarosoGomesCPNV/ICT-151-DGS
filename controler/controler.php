@@ -35,11 +35,29 @@ function login()
 }
 
 
-function loginIsCorrect($form)
+function loginIsCorrect($formL)
 {
-    if (checkLogin($form)) {
+    if (checkLogin($formL)) {
         home();
     } else {
         login();
     }
+}
+
+
+
+function register(){
+    $_GET['action'] = "register";
+    require "view/register.php";
+}
+
+
+function registerIsCorrect($formR)
+{
+    if (checkRegister($formR)) {
+        home();
+    } else {
+        register();
+    }
+
 }

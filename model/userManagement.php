@@ -7,23 +7,41 @@
  * Time : 11:28
  */
 
+require_once 'dbConector.php';
 
 // Fonction pour check l'email et le mot de passe a partir de la base de données
 
-function checkLogin($form){
+function checkLogin($formL){
 
-    $request ="SELECT userEmailAddress, userPsw FROM users where userEmailAddress = '".$form['email']."' AND userPsw = '".$form['password']."';";
-
-    require_once 'dbConector.php';
+    $request ="SELECT userEmailAddress, userPsw, pseudo FROM users where userEmailAddress OR pseudo = '".$formL['email']."' AND userPsw = '".$formL['password']."';";
 
     $queryResult = executeQuery($request);
 
     if ($queryResult == true){
-        $_SESSION['user'] = $form['email'];
+        $_SESSION['user'] = $formL['email'];
         return true;
     }
     else{
         return false;
     }
+
+}
+
+
+function checkRegister($formR){
+
+    $request ="INSERT INTO users (userEmailAddress, userPsw, pseudo) VALUES ('".$formR['email']."','".$formR['password']."','".$formR['pseudo']."';";
+
+    $queryResult = executeQuery($request);
+
+
+    if ($queryResult){
+        $_SESSION['user'] = $formR['email'];
+        return true;
+    }
+    else{
+        return false;
+    }
+
 
 }
