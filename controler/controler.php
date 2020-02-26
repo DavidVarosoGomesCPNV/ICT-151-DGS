@@ -39,8 +39,10 @@ function loginIsCorrect($formL)
 {
     if (checkLogin($formL)) {
         home();
+        echo "home";
     } else {
         login();
+        echo "login";
     }
 }
 
@@ -56,8 +58,10 @@ function registerIsCorrect($formR)
 {
     if (checkRegister($formR)) {
         home();
+        echo "home";
     } else {
         register();
+        echo "register";
     }
 
 }

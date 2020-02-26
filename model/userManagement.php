@@ -13,35 +13,53 @@ require_once 'dbConector.php';
 
 function checkLogin($formL){
 
-    $request ="SELECT userEmailAddress, userPsw, pseudo FROM users where userEmailAddress OR pseudo = '".$formL['email']."' AND userPsw = '".$formL['password']."';";
+    $requestLogin ="SELECT userEmailAddress, userPsw, pseudo FROM users where userEmailAddress = '" . $formL['email']. "' OR pseudo ='" .$formL['email']. "';";
+    $requestLogin2 ="SELECT userEmailAddress FROM users WHERE userEmailAddress = '" . $formL['email'] . "' OR pseudo = '" . $formL['email'] . "';";
 
-    $queryResult = executeQuery($request);
 
-    if ($queryResult == true){
-        $_SESSION['user'] = $formL['email'];
-        return true;
-    }
-    else{
+    $queryResult = executeQuery($requestLogin);
+    $queryResult2 = executeQuery($requestLogin2);
+
+    if ($queryResult) {
+        $userHashedPassword = $queryResult[0]["userPsw"];
+        if (password_verify($formL['password'], $userHashedPassword)) {
+            $_SESSION['email'] = $queryResult2[0]["userEmailAddress"];
+            $_GET['error'] = false;
+            return true;
+        } else {
+            $_GET['error'] = true;
+            return false;
+        }
+    }else{
+        $_GET['error'] = true;
         return false;
     }
-
 }
 
 
-function checkRegister($formR){
+function checkRegister($formR)
+{
 
-    $request ="INSERT INTO users (userEmailAddress, userPsw, pseudo) VALUES ('".$formR['email']."','".$formR['password']."','".$formR['pseudo']."';";
+    $requeteCheck = "Select userEmailAddress, pseudo from users where userEmailAddress ='" . $formR['email'] . "' or pseudo = '" . $formR['pseudo'] . "';";
+    $queryResult = executeQuery($requeteCheck);
 
-    $queryResult = executeQuery($request);
-
-
-    if ($queryResult){
-        $_SESSION['user'] = $formR['email'];
-        return true;
-    }
-    else{
+    if ($queryResult) {
+        $_GET['errorEP'] = true;
         return false;
+    } else {
+        $_GET['errorEP'] = false;
+        if ($formR['password'] == $formR['password2']) {
+            $passHash = password_hash($formR['password'], PASSWORD_DEFAULT);
+            $requeteCreate = "INSERT INTO users (userEmailAddress, userPsw, pseudo) VALUES ('" . $formR['email'] . "','" . $passHash . "','" . $formR['pseudo'] . "');";
+            executeQuery($requeteCreate);
+
+            $_SESSION['email'] = $formR['email'];
+            $_GET['errorPass'] = false;
+            return true;
+        } else {
+            $_GET['errorPass'] = true;
+            return false;
+        }
     }
-
-
 }
+

@@ -33,6 +33,11 @@ $titre = "Rent A Snow - Register";
                 <input type="password" placeholder="Enter Password" name="password" required>
             </label>
 
+            <label for="psw"><b>Password2</b></label>
+            <label>
+                <input type="password" placeholder="Enter Password" name="password2" required>
+            </label>
+
             <label for="uname"><b>Pseudo</b></label>
             <label>
                 <input type="text" placeholder="Enter Pseudo" name="pseudo" required>

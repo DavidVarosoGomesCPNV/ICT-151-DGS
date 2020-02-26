@@ -78,9 +78,9 @@
                             <ul class="nav nav-pills ddmenu">
                                 <!-- php if pour afficher ou retirer les ongles du menu -->
                                 <li><a href="/index.php?action=home">Home</a></li>
-                                <?php if (isset($_SESSION['user'])) :?>
+                                <?php if (isset($_SESSION['email'])) :?>
                                 <li><a href="/index.php?action=logout">Logout</a></li>
-                                <br><li>Vous êtes connecté en tant que : <?php echo $_SESSION['user']?></li>
+                                <br><li>Connecté en tant que : <?php echo $_SESSION['email']?></li>
                                 <?php else:?>
                                 <li><a href="/index.php?action=login">Login</a></li>
                                 <li><a href="/index.php?action=register">Register</a></li>
