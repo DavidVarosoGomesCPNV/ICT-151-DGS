@@ -65,3 +65,7 @@ function registerIsCorrect($formR)
     }
 
 }
+
+function snow(){
+    require "view/snow.php";
+}

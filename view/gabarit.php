@@ -17,33 +17,33 @@
     <meta name="author" content="Html5TemplatesDreamweaver.com">
     <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW"> <!-- Remove this Robots Meta Tag, to allow indexing of site -->
 
-    <link href="view/content/scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="view/content/scripts/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/view/content/scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/view/content/scripts/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="/http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <!-- Icons -->
-    <link href="view/content/scripts/icons/general/stylesheets/general_foundicons.css" media="screen" rel="stylesheet"
+    <link href="/view/content/scripts/icons/general/stylesheets/general_foundicons.css" media="screen" rel="stylesheet"
           type="text/css"/>
-    <link href="view/content/scripts/icons/social/stylesheets/social_foundicons.css" media="screen" rel="stylesheet"
+    <link href="/view/content/scripts/icons/social/stylesheets/social_foundicons.css" media="screen" rel="stylesheet"
           type="text/css"/>
     <!--[if lt IE 8]>
-    <link href="view/content/scripts/icons/general/stylesheets/general_foundicons_ie7.css" media="screen"
+    <link href="/view/content/scripts/icons/general/stylesheets/general_foundicons_ie7.css" media="screen"
           rel="stylesheet"
           type="text/css"/>
-    <link href="view/content/scripts/icons/social/stylesheets/social_foundicons_ie7.css" media="screen" rel="stylesheet"
+    <link href="/view/content/scripts/icons/social/stylesheets/social_foundicons_ie7.css" media="screen" rel="stylesheet"
           type="text/css"/>
     <![endif]-->
-    <link rel="stylesheet" href="view/content/scripts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/view/content/scripts/fontawesome/css/font-awesome.min.css">
     <!--[if IE 7]>
-    <link rel="stylesheet" href="view/content/scripts/fontawesome/css/font-awesome-ie7.min.css">
+    <link rel="stylesheet" href="/view/content/scripts/fontawesome/css/font-awesome-ie7.min.css">
     <![endif]-->
 
-    <link href="view/content/scripts/carousel/style.css" rel="stylesheet" type="text/css"/>
-    <link href="view/content/scripts/camera/css/camera.css" rel="stylesheet" type="text/css"/>
+    <link href="/view/content/scripts/carousel/style.css" rel="stylesheet" type="text/css"/>
+    <link href="/view/content/scripts/camera/css/camera.css" rel="stylesheet" type="text/css"/>
 
     <link href="http://fonts.googleapis.com/css?family=Syncopate" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css">
@@ -52,7 +52,7 @@
     <link href="http://fonts.googleapis.com/css?family=Pontano+Sans" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet" type="text/css">
 
-    <link href="view/content/styles/custom.css" rel="stylesheet" type="text/css"/>
+    <link href="/view/content/styles/custom.css" rel="stylesheet" type="text/css"/>
 </head>
 <body id="pageBody">
 
@@ -65,8 +65,8 @@
         <div class="row-fluid">
             <div class="span12">
                 <div id="divLogo" class="pull-left">
-                    <a href="index.php" id="divSiteTitle">Rent A Snow</a><br/>
-                    <a href="index.php" id="divTagLine">La glisse à moindre coût</a>
+                    <a href="/index.php" id="divSiteTitle">Rent A Snow</a><br/>
+                    <a href="/index.php" id="divTagLine">La glisse à moindre coût</a>
                 </div>
                 <div id="divMenuRight" class="pull-right">
                     <div class="navbar">
@@ -78,13 +78,18 @@
                             <ul class="nav nav-pills ddmenu">
                                 <!-- php if pour afficher ou retirer les ongles du menu -->
                                 <li><a href="/index.php?action=home">Home</a></li>
-                                <?php if (isset($_SESSION['email'])) :?>
-                                <li><a href="/index.php?action=logout">Logout</a></li>
-                                <br><li>Connecté en tant que : <?php echo $_SESSION['email']?></li>
-                                <?php else:?>
-                                <li><a href="/index.php?action=login">Login</a></li>
-                                <li><a href="/index.php?action=register">Register</a></li>
-                                <?php endif;?>
+                                <?php if (isset($_SESSION['email'])) : ?>
+                                    <li><a href="/index.php?action=logout">Logout</a></li>
+                                    <?php if (isset($_SESSION['email'])) : ?>
+                                        <li><a href="/index.php?action=snow">Snows</a></li>
+                                    <?php endif; ?>
+                                    <br>
+                                    <li>Connecté en tant que : <?php echo $_SESSION['email'] ?></li>
+                                <?php else: ?>
+                                    <li><a href="/index.php?action=login">Login</a></li>
+                                    <li><a href="/index.php?action=register">Register</a></li>
+                                <?php endif; ?>
+
                             </ul>
                         </div>
                     </div>
