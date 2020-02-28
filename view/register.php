@@ -30,12 +30,12 @@ $titre = "Rent A Snow - Register";
 
             <label for="psw"><b>Password</b></label>
             <label>
-                <input type="password" placeholder="Enter Password" name="password" required>
+                <input type="password" placeholder="Enter Password" name="password" id="password" required>
             </label>
 
             <label for="psw"><b>Password2</b></label>
             <label>
-                <input type="password" placeholder="Enter Password" name="password2" required>
+                <input type="password" placeholder="Enter Password" name="password2" id="password2" required>
             </label>
 
             <label for="uname"><b>Pseudo</b></label>
@@ -46,9 +46,23 @@ $titre = "Rent A Snow - Register";
             <button type="submit">Register</button>
             <button type="submit">Reset</button>
         </div>
-
-
     </form>
+
+    <script>
+        var password = document.getElementById("password")
+            , confirm_password = document.getElementById("password2");
+
+        function validatePassword(){
+            if(password.value !== confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+    </script>
 
 
 <?php
