@@ -22,6 +22,10 @@ $titre = "Rent A Snow - Login";
             <b style="font-size: 35px">Login</b>
         </div>
         <br>
+        <?php if (isset($_GET['error'])) : ?>
+            <div style="color: red">Rentrez un login valide !</div>
+            <br>
+        <?php endif ?>
 
         <div class="container">
             <label for="uname"><b>Email or Pseudo</b></label>
@@ -35,15 +39,13 @@ $titre = "Rent A Snow - Login";
             </label>
 
             <button type="submit">Login</button>
-            <button type="submit">Reset</button>
         </div>
-
 
     </form>
 
+    <a href="/index.php?action=login">Reset</a>
 
 <?php
-
 
 
 $contenu = ob_get_clean(); // Libére la mémoire tampon dans une variable $content, donc tout ce qui est entre le ob_open et le ob_get_clean va dans la variable tampon

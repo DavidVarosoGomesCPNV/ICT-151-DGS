@@ -7,9 +7,8 @@
  * Time : 11:19
  */
 
+// Conexion a la base de données
 
-//Test client - must be remove to before using in a project
-//try to get a list of available tables in database
 $query = 'SHOW TABLES';
 $queryResult = executeQuery($query);
 
@@ -29,6 +28,8 @@ function executeQuery($query)
 }
 
 //Source : http://php.net/manual/en/pdo.construct.php
+// Ouvre la connexion avec la base de données avec tout les atributs de la base sql
+
 function openDBConnexion()
 {
     $tempDbConnexion = null;

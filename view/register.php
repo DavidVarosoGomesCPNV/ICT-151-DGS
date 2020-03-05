@@ -21,7 +21,11 @@ $titre = "Rent A Snow - Register";
             <b style="font-size: 35px">Register</b>
         </div>
         <br>
-
+        <!-- if qui vérifie si le pseudo ou l'email ne sont pas déjà présents dans la DB -->
+        <?php if(isset($_GET['errorEmailPseudo'])) : ?>
+            <div style="color: red">Le pseudo et ou l'email sont déjà utilisées</div>
+            <br>
+        <?php endif ?>
         <div class="container">
             <label for="uname"><b>Email</b></label>
             <label>
@@ -44,16 +48,18 @@ $titre = "Rent A Snow - Register";
             </label>
 
             <button type="submit">Register</button>
-            <button type="submit">Reset</button>
+
         </div>
     </form>
+
+    <a href="/index.php?action=register">Reset</a>
 
     <script>
         var password = document.getElementById("password")
             , confirm_password = document.getElementById("password2");
 
-        function validatePassword(){
-            if(password.value !== confirm_password.value) {
+        function validatePassword() {
+            if (password.value !== confirm_password.value) {
                 confirm_password.setCustomValidity("Passwords Don't Match");
             } else {
                 confirm_password.setCustomValidity('');

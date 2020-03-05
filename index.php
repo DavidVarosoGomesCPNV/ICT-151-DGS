@@ -32,7 +32,7 @@ if (isset($_GET['action'])) {
         case 'registerIsCorrect':
             registerIsCorrect($_POST);
             break;
-            case 'snow';
+        case 'snow';
             snow();
             break;
         default :

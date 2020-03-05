@@ -7,20 +7,25 @@
  * Time : 11:28
  */
 
-require_once 'dbConector.php';
+// require_once, a besoin du dbConector pour accéder a la base de données car les fonctions login et register l'utilisent
+require 'dbConector.php';
 
-// Fonction pour check l'email et le mot de passe a partir de la base de données
+// Fonction pour check l'email et le mot de passe a partir de la base de données d'une personne déjà dedans
 
-function checkLogin($formL){
+function checkLogin($formL)
+{
+    // Met dans des variables php le contenu des select ou le userEmailAdress et ou le pseudo sont pareils que ce que l'utilisateur rentre dans le input "email"
+    // Dans le login le meme input est utilisé pour l'email et le pseudo, on peut rentrer les 2 pour ce connecter mais le nom html est "email"
+    $requestLogin = "SELECT userEmailAddress, userPsw, pseudo FROM users where userEmailAddress = '" . $formL['email'] . "' OR pseudo ='" . $formL['email'] . "';";
+    $requestLogin2 = "SELECT userEmailAddress FROM users WHERE userEmailAddress = '" . $formL['email'] . "' OR pseudo = '" . $formL['email'] . "';";
 
-    $requestLogin ="SELECT userEmailAddress, userPsw, pseudo FROM users where userEmailAddress = '" . $formL['email']. "' OR pseudo ='" .$formL['email']. "';";
-    $requestLogin2 ="SELECT userEmailAddress FROM users WHERE userEmailAddress = '" . $formL['email'] . "' OR pseudo = '" . $formL['email'] . "';";
-
-
+    // reprend une fonction du dbConector avec en paramètre la variable avec les select au dessus et le met dans une autre variable php
     $queryResult = executeQuery($requestLogin);
     $queryResult2 = executeQuery($requestLogin2);
 
+
     if ($queryResult) {
+        // Compare le mot de passe hash dans la base et celui rentré par l'utilisateur
         $userHashedPassword = $queryResult[0]["userPsw"];
         if (password_verify($formL['password'], $userHashedPassword)) {
             $_SESSION['email'] = $queryResult2[0]["userEmailAddress"];
@@ -30,12 +35,13 @@ function checkLogin($formL){
             $_GET['error'] = true;
             return false;
         }
-    }else{
+    } else {
         $_GET['error'] = true;
         return false;
     }
 }
 
+// Fonction pour créer un utilisateur avec un mode de passe directement hash dans la base de données a partir de register
 
 function checkRegister($formR)
 {
@@ -44,21 +50,21 @@ function checkRegister($formR)
     $queryResult = executeQuery($requeteCheck);
 
     if ($queryResult) {
-        $_GET['errorEP'] = true;
+        $_GET['errorEmailPseudo'] = true;
         return false;
+
     } else {
         $_GET['errorEP'] = false;
         if ($formR['password'] == $formR['password2']) {
             $passHash = password_hash($formR['password'], PASSWORD_DEFAULT);
             $requeteCreate = "INSERT INTO users (userEmailAddress, userPsw, pseudo) VALUES ('" . $formR['email'] . "','" . $passHash . "','" . $formR['pseudo'] . "');";
             executeQuery($requeteCreate);
-
             $_SESSION['email'] = $formR['email'];
-            $_GET['errorPass'] = false;
             return true;
+
         } else {
-            $_GET['errorPass'] = true;
             return false;
+
         }
     }
 }

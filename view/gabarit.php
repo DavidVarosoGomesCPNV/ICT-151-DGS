@@ -134,7 +134,7 @@
                     <!--__________CONTENU__________-->
 
                     <div class="span12" id="divMain">
-                        <?= $contenu; ?>
+                        <?= $content; ?>
                     </div>
 
                     <!--________FIN CONTENU________-->
