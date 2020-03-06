@@ -21,5 +21,5 @@ $titre = "erreur";
 <hr/>
 
 <?php
-  $contenu = ob_get_clean();
+  $content = ob_get_clean();
   require 'gabarit.php';

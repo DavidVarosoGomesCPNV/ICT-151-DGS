@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title><?= $titre; ?></title>
+    <title><?= $title; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Html5TemplatesDreamweaver.com">
@@ -34,7 +34,8 @@
     <link href="/view/content/scripts/icons/general/stylesheets/general_foundicons_ie7.css" media="screen"
           rel="stylesheet"
           type="text/css"/>
-    <link href="/view/content/scripts/icons/social/stylesheets/social_foundicons_ie7.css" media="screen" rel="stylesheet"
+    <link href="/view/content/scripts/icons/social/stylesheets/social_foundicons_ie7.css" media="screen"
+          rel="stylesheet"
           type="text/css"/>
     <![endif]-->
     <link rel="stylesheet" href="/view/content/scripts/fontawesome/css/font-awesome.min.css">
@@ -78,11 +79,9 @@
                             <ul class="nav nav-pills ddmenu">
                                 <!-- php if pour afficher ou retirer les ongles du menu -->
                                 <li><a href="/index.php?action=home">Home</a></li>
+                                <li><a href="/index.php?action=snow">Snows</a></li>
                                 <?php if (isset($_SESSION['email'])) : ?>
                                     <li><a href="/index.php?action=logout">Logout</a></li>
-                                    <?php if (isset($_SESSION['email'])) : ?>
-                                        <li><a href="/index.php?action=snow">Snows</a></li>
-                                    <?php endif; ?>
                                     <br>
                                     <li>Connecté en tant que : <?php echo $_SESSION['email'] ?></li>
                                 <?php else: ?>

@@ -12,7 +12,7 @@
 function displaySnows()
 {
 
-    $requestReadSnow = "SELECT code, model, snowLength, qtyAvailable, description, dailyPrice, photo, active FROM snows";
+    $requestReadSnow = "SELECT code, brand, model, snowLength, qtyAvailable, description, dailyPrice, photo, active FROM snows";
     $queryResult = executeQuery($requestReadSnow);
 
     return $queryResult;

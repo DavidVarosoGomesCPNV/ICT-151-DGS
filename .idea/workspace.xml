@@ -103,6 +103,8 @@
       <workItem from="1583325889247" duration="3825000" />
       <workItem from="1583330359104" duration="2109000" />
       <workItem from="1583332623740" duration="1314000" />
+      <workItem from="1583488847002" duration="1800000" />
+      <workItem from="1583490966512" duration="2337000" />
     </task>
     <servers />
   </component>
@@ -121,26 +123,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/model/snowManagement.php</url>
-          <line>14</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/model/snowManagement.php</url>
-          <line>17</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/model/snowManagement.php</url>
-          <line>15</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

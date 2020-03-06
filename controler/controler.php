@@ -75,3 +75,8 @@ function snow(){
 
 }
 
+function displayASnow(){
+    $tableauSnow = displaySnows();
+    require "view/displayASnow.php";
+}
+

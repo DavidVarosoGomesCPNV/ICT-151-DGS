@@ -8,7 +8,7 @@
  */
 
 // tampon de flux stocké en mémoire
-$title = "Snows";
+$title = "RentASnow - Snows";
 
 ob_start();
 $rows = 0; // Column count

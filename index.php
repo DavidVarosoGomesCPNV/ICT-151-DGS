@@ -35,6 +35,9 @@ if (isset($_GET['action'])) {
         case 'snow';
             snow();
             break;
+            case 'displayASnow';
+            displayASnow();
+            break;
         default :
             home();
 
