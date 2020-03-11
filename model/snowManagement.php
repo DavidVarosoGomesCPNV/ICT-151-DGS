@@ -19,3 +19,13 @@ function displaySnows()
 }
 
 
+function displayASnow($code)
+{
+
+
+    $requestReadSnow = "SELECT code, brand, model, snowLength, qtyAvailable, description, dailyPrice, photo, active FROM snows WHERE code ='".$code."';";
+    $queryResult = executeQuery($requestReadSnow);
+
+    return $queryResult;
+
+}

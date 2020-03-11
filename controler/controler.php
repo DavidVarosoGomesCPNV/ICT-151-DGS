@@ -75,8 +75,14 @@ function snow(){
 
 }
 
-function displayASnow(){
+function snowsAdmin(){
     $tableauSnow = displaySnows();
-    require "view/displayASnow.php";
+    require "view/snowAdmin.php";
+
+}
+
+function displayASnows($code){
+    $tableauSnow = displayASnow($code);
+    require_once "view/displayASnow.php";
 }
 

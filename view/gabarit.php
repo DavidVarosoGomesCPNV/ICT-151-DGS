@@ -80,14 +80,21 @@
                                 <!-- php if pour afficher ou retirer les ongles du menu -->
                                 <li><a href="/index.php?action=home">Home</a></li>
                                 <li><a href="/index.php?action=snow">Snows</a></li>
+
+                                <?php if (isset($_SESSION['type'])) : ?>
+                                    <?php if ($_SESSION['type'] == 1) : ?>
+                                        <li><a href="/index.php?action=snowAdmin">Snows - Admin</a></li>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                                <li><a href="/index.php?action=register">Register</a></li>
                                 <?php if (isset($_SESSION['email'])) : ?>
                                     <li><a href="/index.php?action=logout">Logout</a></li>
                                     <br>
-                                    <li>Connecté en tant que : <?php echo $_SESSION['email'] ?></li>
+                                    <li>Connecté en tant que : <?php if ($_SESSION['type'] == 1) : ?> Admin ; <?php endif; ?> <?php echo $_SESSION['email'] ?></li>
                                 <?php else: ?>
                                     <li><a href="/index.php?action=login">Login</a></li>
-                                    <li><a href="/index.php?action=register">Register</a></li>
                                 <?php endif; ?>
+
 
                             </ul>
                         </div>
