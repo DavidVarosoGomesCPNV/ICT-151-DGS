@@ -14,6 +14,25 @@ ob_start();
 $rows = 0; // Column count
 
 ?>
+<html lang="fr">
+    <head>
+    <style>
+        table, td, th {
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 15px;
+        }
+    </style>
+        <title></title>
+    </head>
     <table>
         <div>
             <article>
@@ -59,6 +78,41 @@ $rows = 0; // Column count
         </div>
     </table>
 
+    <table>
+        <tr>
+            <th><strong>Marque : </strong></th>
+            <th><strong>Model : </strong></th>
+            <th><strong>Longueur : </strong></th>
+            <th><strong>Prix :</strong> CHF </th>
+            <th><strong>Disponibilité: </strong></th>
+        </tr>
+        <tr>
+            <td><?= $result['brand']; ?></td>
+            <td><?= $result['model']; ?></td>
+            <td><?= $result['snowLength']; ?> cm</td>
+            <td><?= $result['dailyPrice']; ?>.- / jour</td>
+            <td><?= $result['qtyAvailable']; ?></td>
+            <td><a href="view/content/images/<?= $result['code']; ?>.png" target="blank"><img
+                            src="<?= $result['photo']; ?>" alt="<?= $result['code']; ?>"></a></td>
+        </tr>
+        <tr>
+            <td>X</td>
+            <td>Griffin</td>
+            <td>$150</td>
+        </tr>
+        <tr>
+            <td>Joe</td>
+            <td>Swanson</td>
+            <td>$300</td>
+        </tr>
+        <tr>
+            <td>Cleveland</td>
+            <td>Brown</td>
+            <td>$250</td>
+        </tr>
+    </table>
+
+</html>
 
 <?php
 $content = ob_get_clean();

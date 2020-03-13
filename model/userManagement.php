@@ -24,8 +24,6 @@ function checkLogin($formL)
     $queryResult = executeQuery($requestLogin);
     $queryResult2 = executeQuery($requestLogin2);
 
-
-
     if ($queryResult) {
         // Compare le mot de passe hash dans la base et celui rentré par l'utilisateur
         $userHashedPassword = $queryResult[0]["userPsw"];
@@ -49,7 +47,6 @@ else {
 }
 
 // Fonction pour créer un utilisateur avec un mode de passe directement hash dans la base de données a partir de register
-
 function checkRegister($formR)
 {
 
@@ -64,7 +61,7 @@ function checkRegister($formR)
         $_GET['errorEP'] = false;
         if ($formR['password'] == $formR['password2']) {
             $passHash = password_hash($formR['password'], PASSWORD_DEFAULT);
-            $requeteCreate = "INSERT INTO users (userEmailAddress, userPsw, pseudo, type) VALUES ('" . $formR['email'] . "','" . $passHash . "','" . $formR['pseudo'] . "','". $formR['type']. "';";
+            $requeteCreate = "INSERT INTO users (userEmailAddress, userPsw, pseudo, type) VALUES ('" . $formR['email'] . "','" . $passHash . "','" . $formR['pseudo'] . "','". $formR['type'] . "');";
             executeQuery($requeteCreate);
             $_SESSION['email'] = $formR['email'];
             return true;
@@ -75,4 +72,3 @@ function checkRegister($formR)
         }
     }
 }
-
