@@ -41,11 +41,6 @@ $title = "Rent A Snow - Register";
                 <input type="password" placeholder="Confirm Password" name="password2" id="password2" required>
             </label>
 
-            <label for="uname"><b>Pseudo</b></label>
-            <label>
-                <input type="text" placeholder="Enter Pseudo" name="pseudo" required>
-            </label>
-
             <?php if (isset($_SESSION['type'])) : ?>
             <?php if ($_SESSION['type'] == 1) : ?>
                 <label for="uname"><b>Type de compte</b></label>

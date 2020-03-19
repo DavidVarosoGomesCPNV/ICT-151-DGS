@@ -36,7 +36,7 @@ function openDBConnexion()
 
     $sqlDriver = 'mysql';
     $hostname = 'localhost';
-    $port = 56000;
+    $port = 3306;
     $charset = 'utf8';
     $dbName = 'snows';
     $userName = 'root';

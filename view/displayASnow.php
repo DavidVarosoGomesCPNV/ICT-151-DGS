@@ -26,6 +26,9 @@ $rows = 0; // Column count
     <div>
         <table>
             <tr>
+                <td style="font-size: 20px"><?= $result['description']; ?></td>
+            </tr>
+            <tr>
                 <td>
                     <a href="view/content/images/<?= $result['code']; ?>.jpg" target="blank"><img
                                 src="<?= $result['photo']; ?>" alt="<?= $result['code']; ?>"></a></td>
@@ -49,6 +52,7 @@ $rows = 0; // Column count
             <tr>
                 <td><strong>Disponibilité : </strong><?= $result['qtyAvailable']; ?></td>
             </tr>
+
         </table>
     </div>
 

@@ -17,8 +17,8 @@ function checkLogin($formL)
 
     // Met dans des variables php le contenu des select ou le userEmailAdress et ou le pseudo sont pareils que ce que l'utilisateur rentre dans le input "email"
     // Dans le login le meme input est utilisé pour l'email et le pseudo, on peut rentrer les 2 pour ce connecter mais le nom html est "email"
-    $requestLogin = "SELECT userEmailAddress, userPsw, pseudo, type FROM users where userEmailAddress = '" . $formL['email'] . "' OR pseudo ='" . $formL['email'] . "';";
-    $requestLogin2 = "SELECT userEmailAddress FROM users WHERE userEmailAddress = '" . $formL['email'] . "' OR pseudo = '" . $formL['email'] . "';";
+    $requestLogin = "SELECT userEmailAddress, userPsw, userType FROM users where userEmailAddress = '" . $formL['email'] . "';";
+    $requestLogin2 = "SELECT userEmailAddress FROM users WHERE userEmailAddress = '" . $formL['email'] . "';";
 
     // reprend une fonction du dbConector avec en paramètre la variable avec les select au dessus et le met dans une autre variable php
     $queryResult = executeQuery($requestLogin);
@@ -29,20 +29,19 @@ function checkLogin($formL)
         $userHashedPassword = $queryResult[0]["userPsw"];
         if (password_verify($formL['password'], $userHashedPassword)) {
             $_SESSION['email'] = $queryResult2[0]["userEmailAddress"];
-            $_SESSION['type'] = $queryResult[0]['type'];
+            $_SESSION['type'] = $queryResult[0]['userType'];
             $_GET['error'] = false;
+            return true;
+        } else {
+            $_GET['error'] = true;
+            return false;
+        }
+    }
 
-        return true;
-    } else {
+    else {
         $_GET['error'] = true;
         return false;
     }
-}
-
-else {
-    $_GET['error'] = true;
-    return false;
-}
 
 }
 
@@ -50,7 +49,7 @@ else {
 function checkRegister($formR)
 {
 
-    $requeteCheck = "Select userEmailAddress, pseudo from users where userEmailAddress ='" . $formR['email'] . "' or pseudo = '" . $formR['pseudo'] . "';";
+    $requeteCheck = "Select userEmailAddress from users where userEmailAddress ='" . $formR['email'] . "';";
     $queryResult = executeQuery($requeteCheck);
 
     if ($queryResult) {
@@ -61,7 +60,7 @@ function checkRegister($formR)
         $_GET['errorEP'] = false;
         if ($formR['password'] == $formR['password2']) {
             $passHash = password_hash($formR['password'], PASSWORD_DEFAULT);
-            $requeteCreate = "INSERT INTO users (userEmailAddress, userPsw, pseudo, type) VALUES ('" . $formR['email'] . "','" . $passHash . "','" . $formR['pseudo'] . "','". $formR['type'] . "');";
+            $requeteCreate = "INSERT INTO users (userEmailAddress, userPsw, userType) VALUES ('" . $formR['email'] . "','" . $passHash . "','". $formR['type'] . "');";
             executeQuery($requeteCreate);
             $_SESSION['email'] = $formR['email'];
             return true;
