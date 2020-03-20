@@ -40,6 +40,7 @@ $rows = 0; // Column count
                     <h2> Nos snows - Admin</h2>
                     <div class="yox-view">
                         <tr>
+                            <th><strong>Code</strong></th>
                             <th><strong>Marque</strong></th>
                             <th><strong>Model</strong></th>
                             <th><strong>Longueur</strong></th>
@@ -58,14 +59,15 @@ $rows = 0; // Column count
                                 <?php $rows = 0; ?>
                             <?php endif ?>
                             <tr>
+                                <td><?= $result['code'];?></td>
                                 <td><?= $result['brand']; ?></td>
                                 <td><?= $result['model']; ?></td>
                                 <td><?= $result['snowLength']; ?> cm</td>
                                 <td><?= $result['dailyPrice']; ?>.- / jour</td>
                                 <td><?= $result['qtyAvailable']; ?></td>
                                 <td><a href="view/content/images/<?= $result['code']; ?>.jpg" target="blank"><img src="<?= $result['photo']; ?>" alt="<?= $result['code']; ?>"></a></td>
-                                <td><button>Update</button></td>
-                                <td><button>Delete</button></td>
+                                <td><button><a href="/index.php?action=updateSnow&code=<?=$result['code'];?>">Update</a></button></td>
+                                <td><button><a href="/index.php?action=deleteASnow&code=<?=$result['code'];?>">Delete</a></button></td>
                                 <?php $result++ ?>
                             </tr>
                             <?php if ($rows % 4) : ?>

@@ -29,3 +29,22 @@ function displayASnow($code)
     return $queryResult;
 
 }
+
+function deleteSnow()
+{
+    $requestDeleteSnow = "DELETE FROM snows WHERE code ='".$_GET['code']."';";
+    $queryResult = executeQuery($requestDeleteSnow);
+    return $queryResult;
+
+}
+
+
+function updateASnow($code)
+{
+
+    $requestDeleteSnow = "DELETE FROM snows WHERE code =' $code ';";
+    $queryResult = executeQuery($requestDeleteSnow);
+
+    return $queryResult;
+
+}

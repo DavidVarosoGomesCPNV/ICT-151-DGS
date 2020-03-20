@@ -40,10 +40,8 @@ function loginIsCorrect($formL)
 {
     if (checkLogin($formL)) {
         home();
-        echo "home";
     } else {
         login();
-        echo "login";
     }
 }
 
@@ -59,10 +57,8 @@ function registerIsCorrect($formR)
 {
     if (checkRegister($formR)) {
         home();
-        echo "home";
     } else {
         register();
-        echo "register";
     }
 
 }
@@ -75,14 +71,32 @@ function snow(){
 
 }
 
+
 function snowsAdmin(){
     $tableauSnow = displaySnows();
     require "view/snowAdmin.php";
 
 }
 
+
 function displayASnows($code){
     $tableauSnow = displayASnow($code);
     require_once "view/displayASnow.php";
 }
 
+
+function deleteASnow(){
+
+    // echo "<script>window.alert('Test')</script>";
+    $tableauSnow = displaySnows();
+    deleteSnow();
+    // Update la page (non opérationel)
+    snowsAdmin();
+
+}
+
+function updateSnow ($code){
+    $tableauSnow = displaySnows();
+    updateASnow($code);
+    require "view/snowAdmin.php";
+}

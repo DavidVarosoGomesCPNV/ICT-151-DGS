@@ -38,9 +38,16 @@ if (isset($_GET['action'])) {
         case 'displayASnow';
             displayASnows($_GET['code']);
             break;
-            case 'snowAdmin';
+        case 'snowAdmin';
             snowsAdmin();
             break;
+        case'deleteASnow';
+            deleteASnow();
+            break;
+        case'updateSnow';
+            updateSnow($_GET['code']);
+            break;
+
         default :
             home();
 
