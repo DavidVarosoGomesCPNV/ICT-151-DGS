@@ -39,12 +39,45 @@ function deleteSnow()
 }
 
 
-function updateASnow($code)
+/** Affichee un snow avec ces détails */
+function detailSingleSnow($code)
 {
 
-    $requestDeleteSnow = "DELETE FROM snows WHERE code =' $code ';";
-    $queryResult = executeQuery($requestDeleteSnow);
+    $requete = "SELECT * FROM snows where code ='$code';";
+    $request = executeQuery($requete);
 
-    return $queryResult;
 
+    return $request;
 }
+
+/** Cherchee tout les code de chaque article */
+
+function showSingleCode($code)
+{
+
+    $requete = "SELECT code FROM snows WHERE code='$code';";
+    $request = executeQuery($requete);
+    return $request;
+}
+
+/** Modifie un snow dans la base de données*/
+function updateSnowBD($code,$brand,$model,$snowLength,$qtyAvailable,$description,$dailyPrice,$photo,$active,$codePrecedent){
+
+    $requete ="UPDATE snows SET code = '$code',brand = '$brand',model = '$model',snowLength = '$snowLength',qtyAvailable = '$qtyAvailable',description = '$description',dailyPrice = '$dailyPrice',photo = '$photo',active = '$active' WHERE code = '$codePrecedent';";
+
+    $request = executeQuery($requete);
+    return $request;
+}
+
+/** Crée un snow dans la base de données*/
+function createSnow($code,$brand,$model,$snowLength,$qtyAvailable,$description,$dailyPrice,$photo,$active){
+
+    $requete ="INSERT INTO snows (code, brand, model, snowLength,qtyAvailable,description,dailyPrice,photo,active) VALUES ('$code','$brand','$model','$snowLength','$qtyAvailable','$description','$dailyPrice','$photo','$active');";
+
+    $request = executeQuery($requete);
+    return $request;
+}
+
+
+
+

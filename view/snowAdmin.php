@@ -30,9 +30,78 @@ $rows = 0; // Column count
         th, td {
             padding: 15px;
         }
+
+        /* The popup form - hidden by default */
+        .formulaireAjouter {
+            animation: fadein 5s;
+            display: none;
+            position: absolute;
+            width: 400px;
+            height: auto;
+            left: 0;
+            right: 0;
+            margin: auto;
+            padding-left: 3px;
+            border: solid 1px black;
+            color : white;
+            background-color: black;
+        }
     </style>
+
+        <script>
+
+            function showPopUpAjouter() {
+                document.getElementById("myPopupAjouter").style.display = "block";
+            }
+
+            function downPopUp() {
+                document.getElementById("myPopupAjouter").style.display = "";
+            }
+
+
+
+        </script>
         <title></title>
     </head>
+    <!-- Ajouter-->
+    <button onclick="showPopUpAjouter()">Ajouter</button>
+    <div class="formulaireAjouter" id="myPopupAjouter">
+
+        <form class="form" method="POST" action="index.php?action=createSnows">
+
+            <label>Code</label>
+            <input type="text" name="codeAdd" required>
+
+            <label>Brand</label>
+            <input type="text" name="brandAdd" required>
+
+            <label>Model</label>
+            <input type="text" name="modelAdd" required>
+
+            <label>SnowLength</label>
+            <input type="number" name="snowLengthAdd" required>
+
+            <label>QtyAvailable (max 6) </label>
+            <input type="number" name="qtyAvailableAdd" >
+
+            <label>Description</label>
+            <input type="text" name="descriptionAdd">
+
+            <label>DailyPrice</label>
+            <input type="number" name="dailyPriceAdd" required>
+
+            <label>Photo</label>
+            <input type="file" name="photoAdd">
+
+            <label>Active (soit 1 soit 0)</label>
+            <input type="number" name="activeAdd">
+
+            <input type="submit" name="bouttonAjouter" value="Ajouter">
+            <button onclick="downPopUp()">Annuler</button>
+        </form>
+
+    </div>
+    <!-- Fin du bouton ajouter-->
     <table>
         <div>
             <article>
@@ -66,7 +135,7 @@ $rows = 0; // Column count
                                 <td><?= $result['dailyPrice']; ?>.- / jour</td>
                                 <td><?= $result['qtyAvailable']; ?></td>
                                 <td><a href="view/content/images/<?= $result['code']; ?>.jpg" target="blank"><img src="<?= $result['photo']; ?>" alt="<?= $result['code']; ?>"></a></td>
-                                <td><button><a href="/index.php?action=updateSnow&code=<?=$result['code'];?>">Update</a></button></td>
+                                <th><a href="index.php?action=updateSnowPage&code=<?= $result['code']; ?>"><input type="button" value="Modifier"></a></th>
                                 <td><button><a href="/index.php?action=deleteASnow&code=<?=$result['code'];?>">Delete</a></button></td>
                                 <?php $result++ ?>
                             </tr>

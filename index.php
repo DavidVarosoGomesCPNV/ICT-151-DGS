@@ -44,9 +44,16 @@ if (isset($_GET['action'])) {
         case'deleteASnow';
             deleteASnow();
             break;
-        case'updateSnow';
-            updateSnow($_GET['code']);
+        case 'createSnows':
+            createSnows($_POST);
             break;
+        case 'updateSnowPage':
+            updateSnowPage($_GET['code']);
+            break;
+        case 'updateSnow':
+            updateSnow($_POST, $_GET['code']);
+            break;
+
 
         default :
             home();
